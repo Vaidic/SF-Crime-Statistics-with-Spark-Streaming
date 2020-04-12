@@ -42,6 +42,18 @@ Please follow the directions found in this helpful StackOverflow post: https://s
 
 ## Output Images
 
+## Run the project
+
+> zookeeper-server-start config/zookeeper.properties
+
+> kafka-server-start config/server.properties
+
+> python consumer_server.py
+
+> python kafka_server.py
+
+> spark-submit --packages org.apache.spark:spark-sql-kafka-0-10_2.11:2.3.4 --master local[*] data_stream.py
+
 ### kafka-console-consumer
 
 ![kafka-console-consumer](output_images/kafka-console-consumer.png)
