@@ -57,3 +57,24 @@ Please follow the directions found in this helpful StackOverflow post: https://s
 ### kafka-console-consumer
 
 ![kafka-console-consumer](output_images/kafka-console-consumer.png)
+
+### kafka-streaming Output & Progress
+
+![kafka-streaming Output & Progress](output_images/streaming.png)
+
+## Questions - Answered
+
+1. How did changing values on the SparkSession property parameters affect the throughput and latency of the data?
+
+We can check how much data is being processed to understand the affect on throughput. It was seen that when we increase maxOffsetPerTrigger , larger chunk of data was being peocessed & the delay to output also increased.
+
+2. What were the 2-3 most efficient SparkSession property key/value pairs? Through testing multiple variations on values, how can you tell these were the most optimal?
+
+- maxRatePerPartition
+- spark.default.parallelism
+
+> We can tell they wee most optimal by observing values like -
+
+- numInputRows,
+- inputRowsPerSecond, and
+- processedRowsPerSecond
