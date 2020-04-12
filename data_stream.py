@@ -27,12 +27,13 @@ def run_spark_job(spark):
 
     df = spark \
         .readStream \
+        .format("kafka")\
         .option('kafka.bootstrap.servers', 'localhost:9095') \
-        .option('subscribe', 'com.udacity.sfpolice.service') \
-        .option('startingOffsets', 'earliest') \
-        .option('maxOffsetsPerTrigger', 10) \
-        .option('maxRatePerPartition', 10) \
-        .option('stopGracefullyOnShutdown', "true") \
+        .option("subscribe", "com.udacity.sfpolice.service")\
+        .option("startingOffsets", "earliest")\
+        .option("maxRatePerPartition", 100)\
+        .option("maxOffsetsPerTrigger", 200)\
+        .option("stopGracefullyOnShutdown", "true") \
         .load()
 
     df.printSchema()
