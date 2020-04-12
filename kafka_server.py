@@ -8,9 +8,9 @@ def run_kafka_server():
     # TODO fill in blanks
     producer = producer_server.ProducerServer(
         input_file=input_file,
-        topic="com.udacity.police-call-service",
-        bootstrap_servers="localhost:9092",
-        client_id="com.udacity.police-call-client"
+        topic="com.udacity.sfpolice.service",
+        bootstrap_servers="localhost:9095",
+        client_id="com.udacity.sfpolice.broker"
     )
 
     return producer

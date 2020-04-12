@@ -13,17 +13,17 @@ class ProducerServer(KafkaProducer):
     # TODO we're generating a dummy data
     def generate_data(self):
         with open(self.input_file) as f:
-            for line in f:
-                message = self.dict_to_binary(line)
+            data_dict = json.load(f)
+            for item in data_dict:
+                message = self.dict_to_binary(item)
                 self.send(self.topic, message)
                 time.sleep(1)
 
-    # TODO fill this in to return the json dictionary to binary
     def dict_to_binary(self, json_dict):
         return json.dumps(json_dict).encode("utf-8")
 
 
-if __name__ == "__main__":
-    producer = ProducerServer(
-        './police-department-calls-for-service.json', 'com.udacity.police-call-service')
-    producer.generate_data()
+# if __name__ == "__main__":
+#     producer = ProducerServer(
+#         './police-department-calls-for-service.json', 'com.udacity.police-call-service')
+#     producer.generate_data()
